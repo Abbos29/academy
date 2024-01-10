@@ -64,9 +64,8 @@
     }
     &__name {
         white-space: nowrap;
-        transition: all 1s;
+        // transition: all .3s ease;
         font-size: 16px;
-
     }
 
     &__item {

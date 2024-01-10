@@ -1,21 +1,29 @@
-import React from 'react'
-import './Area.scss'
+import React from 'react';
+import './Area.scss';
 
-const Area = () => {
+const Area = ({ lessons }) => {
+
   return (
-    <section className="hero area">
-      <div className="container">
-        <div className="hero__wrapper area__wrapper">
-          <div className="area__item area-1">Area-1</div>
-          <div className="area__item area-2">Area-2</div>
-          <div className="area__item area-3">Area-3</div>
-          <div className="area__item area-5">Area-4</div>
-          <div className="area__item area-4">Area-5</div>
-          <div className="area__item area-6">Area-6</div>
+    <section className='hero area'>
+      <div className='container'>
+        <div className='hero__wrapper area__wrapper'>
+          {lessons.map((lesson, index) => {
+            const isLessonBusy = Object.values(lesson).some(
+              (value) => value === true
+            );
+            const areaClass = `area__item area-${index + 1}${
+              isLessonBusy ? ' busy' : ''
+            }`;
+            return (
+              <div className={areaClass} key={index}>
+                Area {index + 1}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Area
+export default Area;
